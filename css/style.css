@@ -102,6 +102,6 @@ nav a::first-letter {
 }
 
 .error {
-	border-color: rgb(128, 0, 0);
-	color: rgb(128, 0, 0);
+	border-color: red;
+	color: red;
 }
