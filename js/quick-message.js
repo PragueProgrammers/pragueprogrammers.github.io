@@ -1,3 +1,5 @@
+const DELIVERY_FAILED = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We are sorry for the trouble.';
+
 window.addEventListener('load', () => {
 	document
 		.getElementById('quick-message-form')
@@ -36,6 +38,12 @@ window.addEventListener('load', () => {
 				}),
 			})
 				.then((response) => {
+					if (response.status !== 200) {
+						statusElement.classList.add('error');
+						statusElement.innerHTML = DELIVERY_FAILED;
+						return;
+					}
+
 					statusElement.innerHTML = 'Your message was successfuly delivered.';
 
 					emailElement.value = '';
@@ -44,7 +52,7 @@ window.addEventListener('load', () => {
 				})
 				.catch((error) => {
 					statusElement.classList.add('error');
-					statusElement.innerHTML = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We are sorry for the trouble.';
+					statusElement.innerHTML = DELIVERY_FAILED;
 				});
 		});
 });
