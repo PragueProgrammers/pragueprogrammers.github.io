@@ -8,7 +8,7 @@
 	padding: 0;
 
 	font-family: 'FixedsysEx', Fixedsys, Monaco, Consolas, monospace;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: normal;
 }
 
@@ -39,11 +39,14 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+}
 
-	@media (min-width: 1280px) {
+@media (min-width: 1280px) {
+	main {
 		max-width: 30vw;
 	}
 }
+
 
 a, a:visited {
 	color: rgb(0, 128, 128);
@@ -51,7 +54,6 @@ a, a:visited {
 
 a:hover {
 	color: rgb(255, 255, 0);
-	text-decoration: underline double;
 }
 
 nav {
@@ -89,18 +91,6 @@ nav a::first-letter {
 	color: rgb(255, 255, 0);
 }
 
-#quick-message-form {
+#quick-message-form, #quick-message-form input, #quick-message-form textarea {
 	width: 100%;
-
-	@media (min-width: 1280px) {
-		max-width: 30vw;
-	}
-}
-
-#quick-message-form input, #quick-message-form textarea {
-	width: 100%;
-}
-
-#quick-message-form input {
-	appearance: none;
 }
