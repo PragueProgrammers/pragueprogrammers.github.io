@@ -20,13 +20,12 @@ html {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin-top: 15px;
 	margin-bottom: 10px;
 
 	color: rgb(255, 255, 0);
 }
 
-p {
+p, ul {
 	margin-bottom: 10px;
 }
 
@@ -41,6 +40,7 @@ main {
 	justify-content: center;
 
 	margin: auto;
+	padding-top: 20px;
 }
 
 @media (min-width: 1280px) {
