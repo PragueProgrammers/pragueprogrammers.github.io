@@ -93,6 +93,10 @@ nav a::first-letter {
 	width: 100%;
 }
 
+#quick-message-status {
+	margin-right: 10px;
+}
+
 .highlight {
 	color: rgb(255, 255, 0);
 }
