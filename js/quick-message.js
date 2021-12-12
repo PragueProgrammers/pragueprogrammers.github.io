@@ -1,4 +1,4 @@
-const DELIVERY_FAILED = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We are sorry for the trouble.';
+const DELIVERY_FAILED = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We regret the inconvenience.';
 
 window.addEventListener('load', () => {
 	document
@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
 			emailElement.classList.remove('error');
 			statusElement.classList.remove('error');
 
-			statusElement.innerHTML = 'Delivering your message...';
+			statusElement.innerHTML = 'Sending your message...';
 
 			fetch({
 				method: 'POST',
