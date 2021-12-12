@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
 
 			emailElement.classList.remove('error');
 			statusElement.classList.remove('error');
-			
+
 			statusElement.innerHTML = 'Delivering your message...';
 
 			fetch({
