@@ -39,6 +39,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+
+	margin: auto;
 }
 
 @media (min-width: 1280px) {
