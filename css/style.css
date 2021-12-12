@@ -37,6 +37,7 @@ li {
 
 main {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 
 	@media (min-width: 1280px) {
