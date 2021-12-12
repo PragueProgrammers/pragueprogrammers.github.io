@@ -89,10 +89,15 @@ nav a::first-letter {
 	color: rgb(128, 0, 0);
 }
 
+#quick-message-form, #quick-message-form input, #quick-message-form textarea {
+	width: 100%;
+}
+
 .highlight {
 	color: rgb(255, 255, 0);
 }
 
-#quick-message-form, #quick-message-form input, #quick-message-form textarea {
-	width: 100%;
+.error {
+	border-color: rgb(128, 0, 0);
+	color: rgb(128, 0, 0);
 }

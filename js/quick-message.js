@@ -1,27 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
+	const formElement = document.getElementById('quick-message-form');
 	const statusElement = document.getElementById('quick-message-status');
 
-	document
-		.getElementById('quick-message-form')
-		.addEventListener('submit', (event) => {
-			e.preventDefault();
+	formElement.addEventListener('submit', (submitEvent) => {
+		submitEvent.preventDefault();
 
-			statusElement.innerHTML = 'Delivering message...';
+		const emailElement = submitEvent.target['email'];
+		const subjectElement = submitEvent.target['subject'];
+		const messageElement = submitEvent.target['message'];
 
-			fetch({
-				method: 'POST',
-				url: 'https://api.pragueprogrammers.cz/quick-message',
-				body: JSON.stringify({
-					email: event.target.elements['email'].value,
-					subject: event.target.elements['subject'].value,
-					message: event.target.elements['message'].value,
-				}),
+		if (!/^\S+@\S+\.\S+$/.test(emailElement.value)) {
+			emailElement.classList.add('error');
+			statusElement.innerHTML = 'You entered an invalid e-mail address. Please try again.';
+			return;
+		}
+
+		if (messageElement.value.trim() === '') {
+			statusElement.innerHTML = 'You did not write a message. Please try again.';
+			return;
+		}
+
+		emailElement.classList.remove('error');
+		statusElement.classList.remove('error');
+		
+		statusElement.innerHTML = 'Delivering your message...';
+
+		fetch({
+			method: 'POST',
+			url: 'https://api.pragueprogrammers.cz/quick-message',
+			body: JSON.stringify({
+				email: emailElement.value,
+				subject: subjectElement.value,
+				message: messageElement.value,
+			}),
+		})
+			.then((response) => {
+				statusElement.innerHTML = 'Your message was successfuly delivered.';
+
+				emailElement.value = '';
+				subjectElement.value = '';
+				messageElement.value = '';
 			})
-				.then((response) => {
-					statusElement.innerHTML = 'Your message was successfuly delivered.';
-				})
-				.catch((error) => {
-					statusElement.innerHTML = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We are sorry for the trouble.';
-				});
+			.catch((error) => {
+				statusElement.classList.add('error');
+				statusElement.innerHTML = 'Message delivery failed. Please try again, or send us an e-mail directly to <a href="mailto:hello@pragueprogrammers.cz">hello@pragueprogrammers.cz</a>. We are sorry for the trouble.';
+			});
 		});
 });
